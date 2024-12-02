@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./../css/SearchBar.css";
 
 interface SearchBarProps {
     onSearch: (query: string) => void;
@@ -13,7 +14,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className="search-bar" onSubmit={handleSubmit}>
             <input
                 type="text"
                 value={query}
