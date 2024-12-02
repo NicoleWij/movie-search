@@ -1,6 +1,7 @@
 import React from "react";
 import { fetchMovies } from "./presenters/MoviePresenter";
 import SearchBar from "./components/SearchBar";
+import MovieCard from "./components/MovieCard";
 
 const App: React.FC = () => {
     const [loading, setLoading] = React.useState(false);
@@ -11,8 +12,8 @@ const App: React.FC = () => {
         setLoading(true);
         setError("");
         try {
-            const movies = await fetchMovies(query);
-            setMovies(movies);
+            const fetchedMovies = await fetchMovies(query);
+            setMovies(fetchedMovies);
         } catch (err) {
             setError("Failed to fetch movies. Try again!");
         } finally {
@@ -26,12 +27,16 @@ const App: React.FC = () => {
             <SearchBar onSearch={handleSearch} />
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
-            {movies.map((movie) => (
-                <div key={movie.imdbID}>
-                    <h2>{movie.Title}</h2>
-                    <p>{movie.Year}</p>
-                </div>
-            ))}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+                {movies.map((movie) => (
+                    <MovieCard
+                        key={movie.imdbID}
+                        title={movie.Title}
+                        year={movie.Year}
+                        poster={movie.Poster}
+                    />
+                ))}
+            </div>
         </div>
     );
 };
