@@ -11,6 +11,7 @@
     "@types/node": "^16.18.121",
     "dotenv": "^16.4.5",
     "movie-search": "file:",
+    "nth-check": "^2.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
@@ -44,5 +45,8 @@
   "devDependencies": {
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1"
+  },
+  "overrides": {
+    "nth-check": "^2.1.1"
   }
 }
